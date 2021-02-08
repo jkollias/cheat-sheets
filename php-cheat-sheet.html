@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PHP Cheat Sheet</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Teko&display=swap" rel="stylesheet"> 
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<style>
+		/* http://meyerweb.com/eric/tools/css/reset/ 
+		v2.0 | 20110126
+		License: none (public domain)
+		*/
+
+		html, body, div, span, applet, object, iframe,
+		h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+		a, abbr, acronym, address, big, cite, code,
+		del, dfn, em, img, ins, kbd, q, s, samp,
+		small, strike, strong, sub, sup, tt, var,
+		b, u, i, center,
+		dl, dt, dd, ol, ul, li,
+		fieldset, form, label, legend,
+		table, caption, tbody, tfoot, thead, tr, th, td,
+		article, aside, canvas, details, embed, 
+		figure, figcaption, footer, header, hgroup, 
+		menu, nav, output, ruby, section, summary,
+		time, mark, audio, video {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+
+		}
+		/* HTML5 display-role reset for older browsers */
+		article, aside, details, figcaption, figure, 
+		footer, header, hgroup, menu, nav, section {
+			display: block;
+		}
+		body {
+			line-height: 1;
+		}
+		ol, ul {
+			list-style: none;
+		}
+		blockquote, q {
+			quotes: none;
+		}
+		blockquote:before, blockquote:after,
+		q:before, q:after {
+			content: '';
+			content: none;
+		}
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		body{
+			font-family: arial;
+			font-family: 'Roboto', sans-serif;
+			font-size: 1.25vw;
+		}
+	</style>
+
+	<style>
+		.page-heading{
+			font-size: 2em;
+			padding: 1em;
+			text-align: center;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.php-logo{
+			background: #787db0;
+			background-image: linear-gradient(45deg, #b0b4d3,#6e72a3);
+			border-radius: 50%;
+			padding: .1em .25em;
+			display: inline-block; 
+			text-shadow: .05em 0 0em rgb(255,255,255);
+			font-style: italic;
+			font-family: 'Teko', sans-serif;
+			position: relative;
+			width: 2em;
+			height: 1em;
+            margin-right: .25em;
+			/*border: .1em solid #474c86;*/
+			/*border-left-color: #b0b4d3;
+			border-bottom-color: #6e72a3;
+            border-right-color: #4a4f88;*/
+		}
+
+		.php-logo .logo-text{
+			display: block; 
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+		}
+
+		.php-logo:before{
+			border-radius: 50%;
+			content: " ";
+			background: #787db0;
+			display: block; 
+			height: calc(100% - .15em);
+			width: calc(100% - .15em);
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+			z-index: 0;
+		}
+
+		pre{
+			background: #333;
+			border: .1em solid #ccc;
+			border-radius: .25em;
+			padding: 1em;
+			color: #fff;
+			font-family: monospace;
+			line-height: 1.25;
+		}
+
+		main{
+			padding: 1em;
+		}
+
+		section{
+			margin-bottom: 2em;
+			padding: 1em;
+			border: .1em solid #ccc;
+			border-radius: .25em;
+			background: #efefef;
+		}
+
+		main h2{ font-size: 1.5em; margin-top: .25em; margin-bottom: .5em;}
+		main h3{ font-size: 1.25em; margin-top:1em; margin-bottom: 1em;}
+
+	</style>
+</head>
+<body>
+ 
+ 
+<header class="page-header">
+	<h1 class="page-heading">
+		<span class="php-logo">
+			<span class="logo-text">php</span>
+		</span> 
+	    Cheat Sheet
+    </h1>
+</header>
+
+<main>
+	<section class="show-errors">
+
+  	<h2>Show Errors</h2>
+<pre>
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+</pre>
+ 
+  </section>
+
+  <section class="string-functions">
+
+  	<h2>String Functions</h2>
+<pre>
+strlen($string);
+strtolower($string);
+strtoupper($string)
+substr_count($string, " ");
+strrev($string);
+str_repeat("Bettle Juice.\n", 3);
+var_dump($string_var);
+</pre>
+
+  	<h3>Santize Data Functions</h3>
+
+<pre>
+trim($string);
+htmlspecialchars($string);
+</pre>
+
+<h3>filter_var($string,filter_name) function</h3>
+<pre>
+filter_var($email, FILTER_SANITIZE_EMAIL);
+</pre>
+  </section>
+
+  <section class="global-variables">
+
+  	<h2>Global Variables</h2>
+
+<pre>
+$GLOBALS[];
+$_REQUEST[];
+$_POST["input_name"];
+$_GET["input_name"];
+</pre>
+
+  </section>
+
+  <section class="loops">
+
+  	<h2>Loops</h2>
+
+  	<h3>While Loop</h3>
+<pre>
+$x = 1;
+
+while($x <= 5) {
+  echo "The number is: $x";
+  $x++;
+}
+</pre>
+
+<h3>For Loop</h3>
+<pre>
+for ($x = 0; $x <= 10; $x++) {
+  echo "The number is: $x";
+}
+</pre>
+
+<h3>Foreach</h3>
+<pre>
+$array = array("red", "green", "blue", "yellow");
+
+foreach ($array as $value) {
+  echo "$value";
+}
+</pre>
+  </section>
+
+  <section class="arrays">
+  	<h2>Array Functions</h2>
+<pre>
+in_array($item_in_array, $array)
+implode(", ", $array);
+array_pop($array); // removes the last element of an array
+array_push($array, 23, 29, 31, 37, 41); // adds elements to the end of an array.
+array_shift($array); // removes the first element of an array.
+array_unshift($array, "horse", "zebra", "lizard"); //adds elements to the beginning of the array.
+
+$treasure_hunt[3][4][2][0];
+$array[] = 19;
+</pre>
+  </section>
+
+  <section class="output">
+  	<h2>Printing Output</h2>
+<pre>
+echo $string;
+print_r($array);
+</pre>
+   </section>
+
+  <section class="date-time">
+  	<h2>Date and Time</h2>
+<pre>
+echo $string;
+print_r($array);
+</pre>
+  </section>
+
+
+  <section class="variables">
+  	<h2>Variables</h2>
+<pre>
+$variable = "My string";
+$variable2 &= "My other string";
+</pre>
+  </section>
+
+
+  <section class="classes">
+  	<h2>Classes</h2>
+<pre>
+ 
+</pre>
+  </section>
+
+  <section class="math-functions">
+  	<h2>Math Functions</h2>
+<pre>
+ ceil(8.873);
+ getrandmax();
+ rand();
+ rand(1, 52);
+ abs(-1287);
+ round(8723.999);
+
+</pre>
+  </section>
+
+  <section class="assignment-operators">
+  	<h2>Assignment Operators</h2>
+<pre>
+
+Long Syntax    				Short Syntax:
+$a = $a + 2  				$a += 2;
+$a = $a + 2 				$a *= 2;
+$a = $a + 2 				$a -= 2;
+$a = $a + 2 				$a /= 2;
+$a = $a + 2 				$a %= 2;
+
+</pre>
+  </section>
+
+ <section class="assignment-operators">
+  	<h2>Logical Operators</h2>
+<pre>
+|| 		or      returns false only when both arguments are false
+&&		and     checks if both arguments are true returns true else it returns false
+!       not     checks if argument is not 
+xor				if both true or both false returns false. Else returns true.
+
+</pre>
+  </section>
+
+
+ <section class="condtional-statments">
+  	<h2>Conditional Statements</h2>
+<pre>
+
+if(true){
+  	return true;
+}elseif{
+	return false;
+}else{
+	return "Neither true or false";
+}
+
+</pre>
+  </section>
+
+
+</main>
+
+<footer>
+
+</footer>
+	
+</body>
+</html>
